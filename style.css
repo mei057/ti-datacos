@@ -8,7 +8,7 @@
 body {
   color: #324370;
   font-family: "Shippori Mincho", serif;
-  background-image: url(images/back.png);
+  background-image: url(images/webp/back.webp);
 }
 
 .firstview {
@@ -16,7 +16,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: url("images/background.jpg");
+  background-image: url("images/webp/background.webp");
   height: 800px;
   background-position: center;
   background-size: cover;
@@ -81,30 +81,117 @@ body {
 }
 
 nav {
-  display: flex;
-  justify-content: center;
-  padding: 30px 50px;
-  position: absolute;
   top: 0;
   width: 100%;
   background-color: rgba(77, 66, 54, 0.8);
-  padding: 20px 0;
+  padding: 5px 0;
   font-family: "Playfair Display", serif;
+  z-index: 9999;
 }
 
-nav ul {
+.nav-container {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
 }
 
-nav li {
+.nav-links {
+  display: flex;
   list-style: none;
-  margin-left: 80px;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-links li {
+  margin: 0 40px;
 }
 
 nav a {
   color: #f9f7f2;
-  font-size: 24px;
+  font-size: 20px;
   text-decoration: none;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  padding-bottom: 5px;
+}
+
+.wave-line {
+  position: absolute;
+  bottom: 0;
+  left: -10%;
+  width: 120%;
+  height: 10px;
+  transition: opacity 0.5s ease;
+}
+
+.wave-line svg {
+  display: block;
+  width: 200%;
+  height: 100%;
+  transform: scaleY(0.5);
+  transform-origin: bottom;
+  animation: wave-slide 1s linear infinite;
+  animation-play-state: paused;
+}
+
+.wave-line svg path {
+  fill: #f9f7f2;
+}
+
+nav a:hover .wave-line svg {
+  animation-play-state: running;
+}
+
+/*
+.each-section {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.each-section-trigger {
+  display: block;
+  padding: 10px;
+}
+
+.wave-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 60px;
+  overflow: hidden;
+}
+
+.wave-icon svg {
+  width: 200%;
+  height: 10px;
+  display: block;
+  animation: wave-slide 1s linear infinite;
+  animation-play-state: paused;
+  filter: drop-shadow(0 2px 3px rgba(77, 66, 54, 2));
+}
+
+.wave-icon .line-2 {
+  animation-delay: -0.5s;
+}
+
+.each-section-trigger:hover .wave-icon svg {
+  animation-play-state: running;
+  opacity: 0.7;
+}*/
+
+@keyframes wave-slide {
+  0% {
+    transform: translateX(0) scaleY(0.5);
+  }
+  100% {
+    transform: translateX(-50%) scaleY(0.5);
+  }
 }
 
 @media (max-width: 768px) {
@@ -451,6 +538,12 @@ nav a {
   text-decoration: none;
   font-weight: bold;
   color: #324370;
+  transition: all 0.3s ease;
+}
+
+.access-content a:hover {
+  color: #f9f7f2;
+  background-color: #324370;
 }
 
 .container {
@@ -526,8 +619,8 @@ nav a {
 }
 
 .bg-combined {
-  background: url("images/footer-background.jpg") no-repeat center center /
-    cover;
+  background: url("images/webp/footer-background.webp") no-repeat center
+    center / cover;
   padding-bottom: 0;
   position: relative;
   margin-top: 200px;
@@ -595,6 +688,14 @@ nav a {
   width: 70px;
   height: cover;
   margin: 30px 0px;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.hours-insta img:hover {
+  opacity: 0.5;
+  transform: scale(1.1);
 }
 
 iframe {
